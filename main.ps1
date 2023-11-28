@@ -10,9 +10,9 @@ function Show-Menu {
 }
 
 enum MenuOption {
-    Option1
-    Option2
-    Exit
+    Play
+    Options
+    Quit
 }
 
 
