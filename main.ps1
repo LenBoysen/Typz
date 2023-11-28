@@ -63,7 +63,7 @@ do {
         { $selectedOption -lt 0 } { $selectedOption = 2 }
         { $selectedOption -gt 2 } { $selectedOption = 0 }
     }
-
+    break
     switch ($key) {
         13 {
             # Enter key
