@@ -29,7 +29,7 @@ function Option1 {
     $englishText = ""
     # In your loop, get a random line
     foreach ($iteration in 1..10) {  # Adjust the loop as needed
-        $randomLine = $lines[(Get-Random -Minimum 0 -Maximum $lines.Count)]
+        $randomLine = $lines[(Get-Random -Minimum 0 -Maximum $lines.Count)] +   " "
     
         # Do something with $randomLine
         $englishText += $randomLine
