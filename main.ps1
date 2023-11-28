@@ -71,12 +71,17 @@ do {
             switch ($selectedOption) {
                 ([MenuOption]::Option1) { Option1 }
                 ([MenuOption]::Option2) { Option2 }
-                ([MenuOption]::Exit) { break }
+                ([MenuOption]::Exit) { Exit }
             }
         }
     }
 
 } while ($true)
 
-# Remove PSReadLine key handlers
-Remove-Module PSReadLine -Force
+
+function Exit {
+    # Remove PSReadLine key handlers
+    Remove-Module PSReadLine -Force
+    exit
+}
+
