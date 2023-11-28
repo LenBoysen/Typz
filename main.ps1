@@ -27,8 +27,12 @@ function Option1 {
     Clear-Host
     
     $englishText = ""
-    for ($i=0; $i -lt 20; $i++){
-           $englishText += ($output -split '\n')[$(Get-Random -Minimum 0 -Maximum (($output | Measure-Object -Line).Lines - 1))] + " "
+    # In your loop, get a random line
+    foreach ($iteration in 1..10) {  # Adjust the loop as needed
+        $randomLine = $lines[(Get-Random -Minimum 0 -Maximum $lines.Count)]
+    
+        # Do something with $randomLine
+        $englishText += $randomLine
     }
     Clear-Host
     # Set the cursor position to the beginning
@@ -146,7 +150,7 @@ function Quit {
 $selectedOption = [MenuOption]::GetValues([MenuOption])[0]
 
 $output = curl https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt
-
+$lines = $output -split '\n'
 do {
     Show-Menu
 
