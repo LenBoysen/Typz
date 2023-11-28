@@ -64,6 +64,11 @@ function Option1 {
     
         # If backspace is pressed, restore the original color and decrement the position
         [Console]::ForegroundColor = $originalColor
+        [Console]::Write($input.KeyChar)
+
+        
+        $input = [Console]::ReadKey($true)
+        
     } elseif ($position -ge $englishText.Length) {
     
     } else {
