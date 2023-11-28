@@ -67,6 +67,7 @@ do {
     switch ($key) {
         13 {
             # Enter key
+            pause
             switch ($selectedOption) {
                 0 { Option1 }
                 2 { Option2 }
