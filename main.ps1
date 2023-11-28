@@ -1,3 +1,14 @@
+# Check if the script is running in the initial process
+if ($MyInvocation.MyCommand.Name -eq 'PowerShell') {
+    # Start a new PowerShell process and run the script in it
+    Start-Process PowerShell -ArgumentList "-File $PSCommandPath"
+    
+    # Exit the current script
+    exit
+}
+
+
+
 # Install-Module -Name PSReadLine -Force -SkipPublisherCheck  # Uncomment and run to install PSReadLine if not installed
 
 Import-Module PSReadLine
