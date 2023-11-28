@@ -25,7 +25,13 @@ function Option1 {
 
     # Clear the screen
     Clear-Host
-
+    $output = curl https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt
+    
+    $englishText = ""
+    for ($i=0; $i -lt 20; $i++){
+           $englishText += ($output -split '\n')[$(Get-Random -Minimum 0 -Maximum (($output | Measure-Object -Line).Lines - 1))] + " "
+    }
+    Clear-Host
     # Set the cursor position to the beginning
     [Console]::SetCursorPosition(0, 1)
     
@@ -34,12 +40,7 @@ function Option1 {
     $Host.UI.RawUI.ForegroundColor = [ConsoleColor]::DarkGray
 
     
-    $output = curl https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt | NullOut
-    
-    $englishText = ""
-    for ($i=0; $i -lt 20; $i++){
-           $englishText += ($output -split '\n')[$(Get-Random -Minimum 0 -Maximum (($output | Measure-Object -Line).Lines - 1))] + " "
-    }
+
     
     
     [Console]::Write($englishText)
