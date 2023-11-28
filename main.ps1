@@ -49,7 +49,7 @@ do {
         if ($option -eq $selectedOption) {
             Set-OptionColor "$option. $($option.ToString())" 'Green'
         } else {
-            Write-Host "$option. $($option.ToString())"
+            Write-Host "$option"
         }
     }
 
