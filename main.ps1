@@ -92,6 +92,7 @@ function Option1 {
             # If the input does not match, display in red
             [Console]::ForegroundColor = [ConsoleColor]::Red
             [Console]::Write($expectedChar)
+            $mistake++
         }
 
         
