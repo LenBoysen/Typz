@@ -26,6 +26,9 @@ function Option1 {
     # Clear the screen
     Clear-Host
 
+    # Set the cursor position to the beginning
+    [Console]::SetCursorPosition(0, 1)
+    
     # Display the English text with all letters in light grey
     $originalColor = $Host.UI.RawUI.ForegroundColor
     $Host.UI.RawUI.ForegroundColor = [ConsoleColor]::DarkGray
@@ -33,8 +36,6 @@ function Option1 {
     $englishText = "The quick brown fox jumps over the lazy dog."
     [Console]::Write($englishText)
 
-    # Set the cursor position to the beginning
-    [Console]::SetCursorPosition(0, 1)
 
     # Enable the cursor
     [Console]::CursorVisible = $true
