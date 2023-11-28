@@ -46,6 +46,11 @@ function Option1 {
     $input = [Console]::ReadKey($true)
     while ($input.Key -ne 'Enter') {
     if ($input.Key -eq 'Backspace') {
+
+        if ([Console]::CursorLeft -le 0) {
+            # If Console]::CursorLeft is less than or equal to 0, exit the if statement
+            return
+        }
     
         [Console]::SetCursorPosition([Console]::CursorLeft - 1, [Console]::CursorTop)
         
