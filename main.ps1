@@ -33,7 +33,15 @@ function Option1 {
     $originalColor = $Host.UI.RawUI.ForegroundColor
     $Host.UI.RawUI.ForegroundColor = [ConsoleColor]::DarkGray
 
-    $englishText = "The quick brown fox jumps over the lazy dog."
+    
+    $output = curl https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt
+    
+    $englishText = ""
+    for ($i=0; $i -lt 20; $i++){
+           $englishText += ($output -split '\n')[$(Get-Random -Minimum 0 -Maximum (($output | Measure-Object -Line).Lines - 1))] + " "
+    }
+    
+    
     [Console]::Write($englishText)
     
     [Console]::SetCursorPosition(0, 1)
