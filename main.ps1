@@ -69,6 +69,10 @@ do {
             # Enter key
             
             switch ($selectedOption) {
+                0 {Option1}
+                1 {Option1}
+                "Option1" {Option1}
+                [MenuOption]::Option1 { Option1 }
                 [int][MenuOption]::Option1 { Option1 }
                 [int][MenuOption]::Option2 { Option2 }
                 [int][MenuOption]::Exit { break }
