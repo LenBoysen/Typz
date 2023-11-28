@@ -77,7 +77,7 @@ do {
             switch ($selectedOption) {
                 ([MenuOption]::Option1) { Option1 }
                 ([MenuOption]::Option2) { Option2 }
-                ([MenuOption]::Exit) { Quit }
+                ([MenuOption]::Exit) { return }
             }
         }
     }
