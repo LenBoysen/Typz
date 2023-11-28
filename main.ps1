@@ -140,8 +140,8 @@ do {
         40 { $selectedOption++ } # Down arrow
 
         # Ensure the selected option stays within bounds
-        { $selectedOption -le 0 } { $selectedOption = 3 }
-        { $selectedOption -ge 4 } { $selectedOption = 1 }
+        { $selectedOption -lt 0 } { $selectedOption = 2 }
+        { $selectedOption -ge 3 } { $selectedOption = 2 }
     }
     
     switch ($key) {
