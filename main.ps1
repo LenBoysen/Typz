@@ -35,7 +35,8 @@ function Option1 {
 
     $englishText = "The quick brown fox jumps over the lazy dog."
     [Console]::Write($englishText)
-
+    
+    [Console]::SetCursorPosition(0, 1)
 
     # Enable the cursor
     [Console]::CursorVisible = $true
