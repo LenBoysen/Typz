@@ -7,9 +7,6 @@ function Show-Menu {
     Write-Host "======================"
     Write-Host "   ASCII GUI Menu"
     Write-Host "======================"
-    Write-Host "1. Option 1"
-    Write-Host "2. Option 2"
-    Write-Host "3. Exit"
 }
 
 function Set-OptionColor {
