@@ -47,7 +47,7 @@ do {
 
     foreach ($option in [MenuOption]::GetValues([MenuOption])) {
         if ($option -eq $selectedOption) {
-            Set-OptionColor "$option. $($option.ToString())" 'Green'
+            Set-OptionColor "$option" 'Green'
         } else {
             Write-Host "$option"
         }
