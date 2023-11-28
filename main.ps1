@@ -94,14 +94,7 @@ function Option1 {
             [Console]::Write($expectedChar)
         }
 
-        [Console]::ForegroundColor = [ConsoleColor]::White
-        $positonLeft = [Console]::CursorLeft
-        $positonTop = [Console]::CursorTop
         
-        [Console]::SetCursorPosition(0, 1)
-        [Console]::Write(Get-Date)
-        
-        [Console]::SetCursorPosition($positonLeft, $positonTop)
         
         $input = [Console]::ReadKey($true)
     }
