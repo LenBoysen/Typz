@@ -32,14 +32,11 @@ function Option1 {
 
     # Record the start time
     $startTime = Get-Date
-    pause
     # Create a runspace
     $runspace = [runspacefactory]::CreateRunspace()
     $runspace.Open()
-    pause
     # Create a PowerShell instance within the runspace
     $powerShell = [powershell]::Create()
-    pause
     # Add the script to the PowerShell instance
     $powerShell.AddScript({
         param($startTime)
@@ -55,15 +52,14 @@ function Option1 {
             # Sleep for a short duration before updating again
             Start-Sleep -Milliseconds 500
         }
-    })
-    pause
+    }) | Out-Null
+    
     # Pass the $startTime variable as an argument to the script
-    $powerShell.AddArgument($startTime)
-    pause
+    $powerShell.AddArgument($startTime) | Out-Null
+    
     # Associate the PowerShell instance with the runspace
     $powerShell.Runspace = $runspace
 
-    pause
     # Start the PowerShell script in the background
     $asyncObject = $powerShell.BeginInvoke()
 
