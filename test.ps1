@@ -9,11 +9,7 @@ function Show-AsciiGui {
     $runspace.Open()
     $runspace.SessionStateProxy.SetVariable("inputText", $inputText)
 
-    $scriptblock = {
-        param (
-            [runspace]$runspace
-        )
-
+    $dateScriptBlock = {
         while ($true) {
             $date = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
             Write-Host "Current Date: $date"
@@ -22,10 +18,7 @@ function Show-AsciiGui {
         }
     }
 
-    $runspace.SessionStateProxy.SetVariable("job", [powershell]::Create().AddScript($scriptblock).AddArgument($runspace))
-    $runspace.SessionStateProxy.SetVariable("userInput", "")
-
-    [powershell]::Create().AddScript({
+    $userInputScriptBlock = {
         while ($true) {
             Write-Host "User Input:"
             Write-Host "-----------------------"
@@ -33,13 +26,22 @@ function Show-AsciiGui {
             Write-Host "-----------------------"
 
             $userInput = Read-Host "Enter something:"
-            $using:userInput = $userInput
+            $script:global:userInput = $userInput
 
             Start-Sleep -Milliseconds 100
         }
-    }).BeginInvoke()
+    }
 
-    $job = $runspace.SessionStateProxy.GetVariable("job").BeginInvoke()
+    $dateJob = [powershell]::Create().AddScript($dateScriptBlock).AddArgument($runspace)
+    $userInputJob = [powershell]::Create().AddScript($userInputScriptBlock)
+
+    $runspace.SessionStateProxy.SetVariable("userInputJob", $userInputJob)
+
+    $dateJob.Runspace = $runspace
+    $userInputJob.Runspace = $runspace
+
+    $dateJob.BeginInvoke()
+    $userInputJob.BeginInvoke()
 
     # Wait for user to exit the script
     do {
