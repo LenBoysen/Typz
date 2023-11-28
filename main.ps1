@@ -60,21 +60,22 @@ do {
         40 { $selectedOption++ } # Down arrow
 
         # Ensure the selected option stays within bounds
-        { $selectedOption -lt 1 } { $selectedOption = 3 }
-        { $selectedOption -gt 3 } { $selectedOption = 1 }
+        { $selectedOption -lt 0 } { $selectedOption = 2 }
+        { $selectedOption -gt 2 } { $selectedOption = 0 }
     }
 
     switch ($key) {
         13 {
             # Enter key
             switch ($selectedOption) {
-                1 { Option1 }
+                0 { Option1 }
                 2 { Option2 }
+                3 { break }
             }
         }
     }
 
-} while ($selectedOption -ne 3)
+} while ($true)
 
 # Remove PSReadLine key handlers
 Remove-Module PSReadLine -Force
