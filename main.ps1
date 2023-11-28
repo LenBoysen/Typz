@@ -34,10 +34,7 @@ function Option1 {
     [Console]::Write($englishText)
 
     # Set the cursor position to the beginning
-    $cursorPosition = [Console]::CursorPosition
-    $cursorPosition.Left = 0
-    $cursorPosition.Top = 0
-    [Console]::SetCursorPosition($cursorPosition.Left, $cursorPosition.Top)
+    [Console]::SetCursorPosition(0, 0)
 
     # Enable the cursor
     [Console]::CursorVisible = $true
@@ -52,9 +49,8 @@ function Option1 {
     # Reset the console color and hide the cursor
     $Host.UI.RawUI.ForegroundColor = $originalColor
     [Console]::CursorVisible = $false
-
-    
 }
+
 
 
 
