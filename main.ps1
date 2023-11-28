@@ -1,3 +1,7 @@
+# Install-Module -Name PSReadLine -Force -SkipPublisherCheck  # Uncomment and run to install PSReadLine if not installed
+
+Import-Module PSReadLine
+
 function Show-Menu {
     Clear-Host
     Write-Host "======================"
@@ -24,7 +28,15 @@ function Option2 {
 
 do {
     Show-Menu
-    $choice = Read-Host "Enter your choice"
+    $choice = $null
+
+    $key = $host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown').VirtualKeyCode
+
+    switch ($key) {
+        49 { $choice = '1' } # '1' key
+        50 { $choice = '2' } # '2' key
+        51 { $choice = '3' } # '3' key
+    }
 
     switch ($choice) {
         '1' { Option1 }
@@ -32,3 +44,6 @@ do {
     }
 
 } while ($choice -ne '3')
+
+# Remove PSReadLine key handlers
+Remove-Module PSReadLine -Force
