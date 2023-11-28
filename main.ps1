@@ -43,7 +43,7 @@ function Option2 {
 function Exit {
     # Remove PSReadLine key handlers
     Remove-Module PSReadLine -Force
-    exit
+    return
 }
 
 $selectedOption = [MenuOption]::Option1
