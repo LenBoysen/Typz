@@ -99,7 +99,7 @@ function Option1 {
         $positonTop = [Console]::CursorTop
         
         [Console]::SetCursorPosition(0, 1)
-        [Console]::Write($startDate - Get-Date)
+        [Console]::Write(Get-Date)
         
         [Console]::SetCursorPosition($positonLeft, $positonTop)
         
