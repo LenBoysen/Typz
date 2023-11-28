@@ -28,21 +28,21 @@ function Set-OptionColor {
 
 function Option1 {
     Clear-Host
-    Write-Host "You selected Option 1"
+    Write-Host "You selected $selectedOption"
     # Add your logic for Option 1 here
     Read-Host -Prompt "Press Enter to continue"
 }
 
 function Option2 {
     Clear-Host
-    Write-Host "You selected Option 2"
+    Write-Host "You selected $selectedOption"
     # Add your logic for Option 2 here
     Read-Host -Prompt "Press Enter to continue"
 }
 
 
 
-$selectedOption = [MenuOption]::Option1
+$selectedOption = [MenuOption]::GetValues([MenuOption])[0]
 
 do {
     Show-Menu
