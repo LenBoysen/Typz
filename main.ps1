@@ -167,9 +167,34 @@ function Option1 {
 
 function Option2 {
     Clear-Host
-    Write-Host "You selected $selectedOption"
-    # Add your logic for Option 2 here
+
+    
+    # Create a runspace
+    $runspace = [runspacefactory]::CreateRunspace()
+    $runspace.Open()
+    # Create a PowerShell instance within the runspace
+    $powerShell = [powershell]::Create()
+    # Add the script to the PowerShell instance
+    $powerShell.AddScript({
+        param($startTime)
+        Write-Host "Press Enter to continue"
+        }
+    }) | Out-Null
+    
+    # Associate the PowerShell instance with the runspace
+    $powerShell.Runspace = $runspace
+
+    # Start the PowerShell script in the background
+    $asyncObject = $powerShell.BeginInvoke()
+    
     Read-Host -Prompt "Press Enter to continue"
+
+    # Stop the runspace
+    $powerShell.EndInvoke($asyncObject)
+
+    # Close the runspace
+    $runspace.Close()
+    
 }
 
 function Quit {
