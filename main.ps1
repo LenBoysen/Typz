@@ -94,6 +94,7 @@ function Option1 {
 
 
     }
+    pause
 
     # Reset the console color and hide the cursor
     [Console]::ReadKey($false) | Out-Null
