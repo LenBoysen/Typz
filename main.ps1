@@ -46,7 +46,8 @@ function Option1 {
             $elapsedTime = (Get-Date) - $startTime
     
             # Clear the console and update the elapsed time
-            Clear-Host
+            [Console]::SetCursorPosition(0, 15)
+            Write-Output "Elapsed Time: $($elapsedTime.ToString())"
             Write-Host "Elapsed Time: $($elapsedTime.ToString())"
     
             # Sleep for a short duration before updating again
@@ -67,6 +68,8 @@ function Option1 {
 
 
 
+    # Set the cursor position to the beginning
+    [Console]::SetCursorPosition(1, 0)
 
     
     # Display the English text with all letters in light grey
@@ -80,8 +83,6 @@ function Option1 {
     $mistake = 0
     
 
-    # Set the cursor position to the beginning
-    [Console]::SetCursorPosition(0, 0)
 
     # Enable the cursor
     [Console]::CursorVisible = $true
