@@ -44,12 +44,14 @@ function Option1 {
         while ($true) {
             # Calculate the elapsed time
             $elapsedTime = (Get-Date) - $startTime
+            $positonLeft = [Console]::CursorLeft
+            $positonTop  = [Console]::CursorTop
     
             # Clear the console and update the elapsed time
-            [Console]::SetCursorPosition(0, 15)
+            [Console]::SetCursorPosition(15, 0)
             Write-Output "Elapsed Time: $($elapsedTime.ToString())"
             Write-Host "Elapsed Time: $($elapsedTime.ToString())"
-    
+            [Console]::SetCursorPosition($positonLeft, $positonTop)
             # Sleep for a short duration before updating again
             Start-Sleep -Milliseconds 500
         }
