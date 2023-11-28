@@ -6,7 +6,7 @@ Import-Module PSReadLine
 function Show-Menu {
     Clear-Host
     Write-Host "======================"
-    Write-Host "   ASCII GUI Menu"
+    Write-Host "      Typz Menu       "
     Write-Host "======================"
 }
 
@@ -20,7 +20,7 @@ enum MenuOption {
 
 function Option1 {
     Clear-Host
-    Write-Host "You selected Option 1"
+    Write-Host "You selected $selectedOption"
     Read-Host -Prompt "Press Enter to continue"
 
     # Clear the screen
@@ -140,8 +140,8 @@ do {
         40 { $selectedOption++ } # Down arrow
 
         # Ensure the selected option stays within bounds
-        { $selectedOption -lt 0 } { $selectedOption = [MenuOption]::GetValues([MenuOption])[2] }
-        { $selectedOption -gt 2 } { $selectedOption = [MenuOption]::GetValues([MenuOption])[0] }
+        { $selectedOption -lt 0 } { $selectedOption = [MenuOption]::GetValues([MenuOption])[[MenuOption]::GetValues([MenuOption]).Length - 1] }
+        { $selectedOption -gt [MenuOption]::GetValues([MenuOption]).Length - 1 } { $selectedOption = [MenuOption]::GetValues([MenuOption])[0] }
     }
     
     switch ($key) {
