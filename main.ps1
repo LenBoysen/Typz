@@ -14,7 +14,6 @@ enum MenuOption {
     Play
     Options
     Quit
-    Test
 }
 
 
