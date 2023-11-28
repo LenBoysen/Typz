@@ -26,12 +26,49 @@ function Option1 {
     # Clear the screen
     Clear-Host
 
+
+    # Initialize the startTime variable
+    $startTime = Get-Date
+
+    # Create a runspace
+    $runspace = [runspacefactory]::CreateRunspace()
+    $runspace.Open()
+    
+    # Create a PowerShell instance within the runspace
+    $powerShell = [powershell]::Create().AddScript({
+        param ($startTime)
+    
+        while ($true) {
+            # Calculate the elapsed time
+            $elapsedTime = (Get-Date) - $startTime
+    
+            # Clear the console and update the elapsed time
+            [Console]::SetCursorPosition(0, 15)
+            Write-Host "$($elapsedTime.ToString())"
+    
+            # Sleep for a short duration before updating again
+            Start-Sleep -Milliseconds 500
+        }
+    }) -ArgumentList $startTime
+    
+    # Associate the PowerShell instance with the runspace
+    $powerShell.Runspace = $runspace
+    
+    # Start the PowerShell script in the background
+    $asyncObject = $powerShell.BeginInvoke()
+    
     # Display the English text with all letters in light grey
     $originalColor = $Host.UI.RawUI.ForegroundColor
     $Host.UI.RawUI.ForegroundColor = [ConsoleColor]::DarkGray
 
     $englishText = "The quick brown fox jumps over the lazy dog."
     [Console]::Write($englishText)
+
+    # Initialize the mistake variable
+    $mistake = 0
+
+    
+    
 
     # Set the cursor position to the beginning
     [Console]::SetCursorPosition(0, 0)
@@ -42,6 +79,8 @@ function Option1 {
     # Initialize the position variable
     $position = 0
 
+
+    
     # Capture user input and process it
     $input = [Console]::ReadKey($true)
     while ($input.Key -ne 'Enter') {
@@ -94,6 +133,12 @@ function Option1 {
 
 
     }
+    # Stop the runspace
+    $powerShell.EndInvoke($asyncObject)
+
+    # Close the runspace
+    $runspace.Close()
+
     
     # Reset the console color and hide the cursor
     #[Console]::ReadKey($false) | Out-Null
