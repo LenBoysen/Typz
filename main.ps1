@@ -50,7 +50,7 @@ function Option1 {
             $position++
 
             # Calculate the expected character based on the position
-            $expectedChar = [char]($position - 1 + [int][char]'a')
+            $expectedChar = $englishText[$position]
 
             if ($input.KeyChar -eq $expectedChar) {
                 # If the input matches the expected character, display in white
