@@ -40,6 +40,12 @@ function Option2 {
     Read-Host -Prompt "Press Enter to continue"
 }
 
+function Exit {
+    # Remove PSReadLine key handlers
+    Remove-Module PSReadLine -Force
+    exit
+}
+
 $selectedOption = [MenuOption]::Option1
 
 do {
@@ -79,9 +85,5 @@ do {
 } while ($true)
 
 
-function Exit {
-    # Remove PSReadLine key handlers
-    Remove-Module PSReadLine -Force
-    exit
-}
+
 
