@@ -20,10 +20,43 @@ enum MenuOption {
 
 function Option1 {
     Clear-Host
-    Write-Host "You selected $selectedOption"
-    # Add your logic for Option 1 here
+    Write-Host "You selected Option 1"
     Read-Host -Prompt "Press Enter to continue"
+
+    # Clear the screen
+    Clear-Host
+
+    # Display the English text with all letters in light grey
+    $originalColor = $Host.UI.RawUI.ForegroundColor
+    $Host.UI.RawUI.ForegroundColor = [ConsoleColor]::DarkGray
+
+    $englishText = "The quick brown fox jumps over the lazy dog."
+    [Console]::Write($englishText)
+
+    # Set the cursor position to the beginning
+    $cursorPosition = [Console]::CursorPosition
+    $cursorPosition.Left = 0
+    $cursorPosition.Top = 0
+    [Console]::SetCursorPosition($cursorPosition.Left, $cursorPosition.Top)
+
+    # Enable the cursor
+    [Console]::CursorVisible = $true
+
+    # Capture user input and overwrite the existing text
+    $input = [Console]::ReadKey($true)
+    while ($input.Key -ne 'Enter') {
+        [Console]::Write($input.KeyChar)
+        $input = [Console]::ReadKey($true)
+    }
+
+    # Reset the console color and hide the cursor
+    $Host.UI.RawUI.ForegroundColor = $originalColor
+    [Console]::CursorVisible = $false
+
+    
 }
+
+
 
 function Option2 {
     Clear-Host
