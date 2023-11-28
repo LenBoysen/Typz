@@ -76,8 +76,10 @@ function Option1 {
     }
 
     # Reset the console color and hide the cursor
+    [Console]::ReadKey($false) | Out-Null
     [Console]::ForegroundColor = $originalColor
     [Console]::CursorVisible = $false
+    
 }
 
 
