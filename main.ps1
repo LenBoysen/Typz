@@ -86,7 +86,7 @@ function Option1 {
     }
 
         # Overwrite the existing text with the user input
-        [Console]::Write($input.KeyChar)
+        # [Console]::Write($input.KeyChar)
 
         # Read the next key
         $input = [Console]::ReadKey($true)
