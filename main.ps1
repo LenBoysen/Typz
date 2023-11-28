@@ -38,7 +38,7 @@ function Option1 {
 
 
     # Set the cursor position to the beginning
-    [Console]::SetCursorPosition(0, 1)
+    [Console]::SetCursorPosition(0, 0)
 
     
     # Display the English text with all letters in light grey
@@ -129,33 +129,7 @@ function Option1 {
 
 function Option2 {
     Clear-Host
-    
-    # Create a runspace
-    $runspace = [runspacefactory]::CreateRunspace()
-    $runspace.Open()
-    # Create a PowerShell instance within the runspace
-    $powerShell = [powershell]::Create()
-    # Add the script to the PowerShell instance
-    $powerShell.AddScript({
-        Console.WriteLine("Process     HandleCount")
-        Write-Host "Elapsed Time:"
-    })
-    
-    
-    # Associate the PowerShell instance with the runspace
-    $powerShell.Runspace = $runspace
-
-    # Start the PowerShell script in the background
-    $asyncObject = $powerShell.BeginInvoke()
-
-    
-    Read-Host -Prompt "Press Enter to continue"
-    
-    # Stop the runspace
-    $powerShell.EndInvoke($asyncObject)
-
-    # Close the runspace
-    $runspace.Close()
+   
 }
 
 function Quit {
