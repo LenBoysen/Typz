@@ -67,13 +67,11 @@ do {
     switch ($key) {
         13 {
             # Enter key
-            Clear-Host
-            Read-Host -Prompt [int]$selectedOption
             
-            switch ($selectedOption) {
-                [MenuOption]::Option1 { Option1 }
-                [MenuOption]::Option2 { Option2 }
-                [MenuOption]::Exit { break }
+            switch ($selectedOption.ToString()) {
+                [MenuOption]::Option1.ToString() { Option1 }
+                [MenuOption]::Option2.ToString() { Option2 }
+                [MenuOption]::Exit.ToString() { break }
             }
         }
     }
