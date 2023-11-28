@@ -40,7 +40,7 @@ function Option2 {
     Read-Host -Prompt "Press Enter to continue"
 }
 
-function Exit {
+function Quit {
     # Remove PSReadLine key handlers
     Remove-Module PSReadLine -Force
     return
@@ -77,7 +77,7 @@ do {
             switch ($selectedOption) {
                 ([MenuOption]::Option1) { Option1 }
                 ([MenuOption]::Option2) { Option2 }
-                ([MenuOption]::Exit) { Exit }
+                ([MenuOption]::Exit) { Quit }
             }
         }
     }
