@@ -26,21 +26,6 @@ function Option1 {
     # Clear the screen
     Clear-Host
 
-
-
-
-
-    # Record the start time
-    $startTime = Get-Date
-   
-
-
-
-
-    # Set the cursor position to the beginning
-    [Console]::SetCursorPosition(0, 0)
-
-    
     # Display the English text with all letters in light grey
     $originalColor = $Host.UI.RawUI.ForegroundColor
     $Host.UI.RawUI.ForegroundColor = [ConsoleColor]::DarkGray
@@ -48,10 +33,8 @@ function Option1 {
     $englishText = "The quick brown fox jumps over the lazy dog."
     [Console]::Write($englishText)
 
-    # Initialize the mistake variable
-    $mistake = 0
-    
-
+    # Set the cursor position to the beginning
+    [Console]::SetCursorPosition(0, 0)
 
     # Enable the cursor
     [Console]::CursorVisible = $true
@@ -59,8 +42,6 @@ function Option1 {
     # Initialize the position variable
     $position = 0
 
-
-    
     # Capture user input and process it
     $input = [Console]::ReadKey($true)
     while ($input.Key -ne 'Enter') {
@@ -106,7 +87,7 @@ function Option1 {
             [Console]::ForegroundColor = [ConsoleColor]::Red
             [Console]::Write($expectedChar)
         }
-        
+
         
         $input = [Console]::ReadKey($true)
     }
@@ -129,7 +110,9 @@ function Option1 {
 
 function Option2 {
     Clear-Host
-   
+    Write-Host "You selected $selectedOption"
+    # Add your logic for Option 2 here
+    Read-Host -Prompt "Press Enter to continue"
 }
 
 function Quit {
@@ -174,7 +157,6 @@ do {
     }
 
 } while ($true)
-
 
 
 
