@@ -32,14 +32,14 @@ function Option1 {
 
     # Record the start time
     $startTime = Get-Date
-    
+    pause
     # Create a runspace
     $runspace = [runspacefactory]::CreateRunspace()
     $runspace.Open()
-    
+    pause
     # Create a PowerShell instance within the runspace
     $powerShell = [powershell]::Create()
-    
+    pause
     # Add the script to the PowerShell instance
     $powerShell.AddScript({
         param($startTime)
@@ -56,16 +56,19 @@ function Option1 {
             Start-Sleep -Milliseconds 500
         }
     })
-    
+    pause
     # Pass the $startTime variable as an argument to the script
     $powerShell.AddArgument($startTime)
-    
+    pause
     # Associate the PowerShell instance with the runspace
     $powerShell.Runspace = $runspace
 
     pause
     # Start the PowerShell script in the background
     $asyncObject = $powerShell.BeginInvoke()
+
+
+
 
 
 
@@ -79,8 +82,6 @@ function Option1 {
 
     # Initialize the mistake variable
     $mistake = 0
-
-    
     
 
     # Set the cursor position to the beginning
