@@ -39,17 +39,29 @@ function Option1 {
     # Enable the cursor
     [Console]::CursorVisible = $true
 
-    # Capture user input and overwrite the existing text
+    # Capture user input and process it
     $input = [Console]::ReadKey($true)
     while ($input.Key -ne 'Enter') {
+        if ($input.KeyChar -in 'a'..'z') {
+            # If the input is a lowercase letter, make it red
+            [Console]::ForegroundColor = [ConsoleColor]::Red
+        } elseif ($input.Key -eq 'Backspace') {
+            # If backspace is pressed, restore the original color
+            [Console]::ForegroundColor = $originalColor
+        }
+
+        # Overwrite the existing text with the user input
         [Console]::Write($input.KeyChar)
+
+        # Read the next key
         $input = [Console]::ReadKey($true)
     }
 
     # Reset the console color and hide the cursor
-    $Host.UI.RawUI.ForegroundColor = $originalColor
+    [Console]::ForegroundColor = $originalColor
     [Console]::CursorVisible = $false
 }
+
 
 
 
