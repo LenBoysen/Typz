@@ -81,11 +81,12 @@ function Option1 {
         if ($input.KeyChar -eq $expectedChar) {
             # If the input matches the expected character, display in white
             [Console]::ForegroundColor = [ConsoleColor]::White
+            [Console]::Write($input.KeyChar)
         } else {
             # If the input does not match, display in red
             [Console]::ForegroundColor = [ConsoleColor]::Red
+            [Console]::Write($expectedChar)
         }
-        [Console]::Write($input.KeyChar)
 
         
         $input = [Console]::ReadKey($true)
