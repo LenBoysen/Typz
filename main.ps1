@@ -49,7 +49,7 @@ function Option1 {
 
         if ([Console]::CursorLeft -le 0) {
             # If Console]::CursorLeft is less than or equal to 0, exit the if statement
-            return
+            continue
         }
     
         [Console]::SetCursorPosition([Console]::CursorLeft - 1, [Console]::CursorTop)
