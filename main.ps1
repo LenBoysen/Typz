@@ -70,7 +70,7 @@ function Option1 {
         $input = [Console]::ReadKey($true)
         
     } elseif ($position -ge $englishText.Length) {
-    
+        $input = [Console]::ReadKey($true)
     } else {
         # Calculate the expected character based on the position
         $expectedChar = $englishText[$position]
