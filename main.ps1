@@ -140,7 +140,6 @@ do {
         40 { $selectedOption++ } # Down arrow
 
         # Ensure the selected option stays within bounds
-        { true } { Read-Host -Prompt $selectedOption }
         { $selectedOption -le 0 } { $selectedOption = 2 }
         { $selectedOption -ge 2 } { $selectedOption = 0 }
     }
