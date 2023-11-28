@@ -25,7 +25,6 @@ function Option1 {
 
     # Clear the screen
     Clear-Host
-    $output = curl https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt
     
     $englishText = ""
     for ($i=0; $i -lt 20; $i++){
@@ -145,6 +144,8 @@ function Quit {
 }
 
 $selectedOption = [MenuOption]::GetValues([MenuOption])[0]
+
+$output = curl https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt
 
 do {
     Show-Menu
