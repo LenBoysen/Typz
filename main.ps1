@@ -101,7 +101,11 @@ function Option1 {
 
 
     }
+    [Console]::ForegroundColor = [ConsoleColor]::White
+    $positonLeft = [Console]::CursorLeft
+    $positonTop = [Console]::CursorTop
     
+
     # Reset the console color and hide the cursor
     #[Console]::ReadKey($false) | Out-Null
     [Console]::ForegroundColor = $originalColor
