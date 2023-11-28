@@ -1,4 +1,5 @@
 # Install-Module -Name PSReadLine -Force -SkipPublisherCheck  # Uncomment and run to install PSReadLine if not installed
+[Console]::CursorVisible = $false
 
 Import-Module PSReadLine
 
@@ -40,7 +41,10 @@ function Option2 {
     Read-Host -Prompt "Press Enter to continue"
 }
 
-
+function Quit {
+    Clear-Host
+    
+}
 
 $selectedOption = [MenuOption]::GetValues([MenuOption])[0]
 
@@ -73,7 +77,7 @@ do {
             switch ($selectedOption) {
                 ([MenuOption]::Play) { Option1 }
                 ([MenuOption]::Options) { Option2 }
-                ([MenuOption]::Quit) { Clear-Host; return }
+                ([MenuOption]::Quit) { Quit; return }
             }
         }
     }
