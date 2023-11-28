@@ -47,8 +47,8 @@ function Option1 {
     while ($input.Key -ne 'Enter') {
     if ($input.Key -eq 'Backspace') {
         [Console]::ForegroundColor = [ConsoleColor]::DarkGray
-        [Console]::Write($englishText[$position])
-        #[Console]::SetCursorPosition([Console]::CursorLeft, [Console]::CursorTop)
+        [Console]::Write($englishText[$position - 1])
+        [Console]::SetCursorPosition([Console]::CursorLeft - 1, [Console]::CursorTop)
 
     
         # If backspace is pressed, restore the original color and decrement the position
