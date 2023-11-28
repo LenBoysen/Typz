@@ -57,7 +57,7 @@ function Option1 {
     
         # If backspace is pressed, restore the original color and decrement the position
         [Console]::ForegroundColor = $originalColor
-    } elseif ($position -gt $englishText.Length) {
+    } elseif ($position -ge $englishText.Length) {
         # If the position is beyond the length of the English text, delete the last character
         [Console]::SetCursorPosition([Console]::CursorLeft - 1, [Console]::CursorTop)
         [Console]::Write(' ')
