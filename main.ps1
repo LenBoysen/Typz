@@ -140,8 +140,8 @@ do {
         40 { $selectedOption++ } # Down arrow
 
         # Ensure the selected option stays within bounds
-        { $selectedOption -lt 0 } { $selectedOption = 2 }
-        { $selectedOption -ge 3 } { $selectedOption = 2 }
+        { $selectedOption -lt 0 } { $selectedOption = [MenuOption]::GetValues([MenuOption])[2] }
+        { $selectedOption -gt 2 } { $selectedOption = [MenuOption]::GetValues([MenuOption])[0] }
     }
     
     switch ($key) {
