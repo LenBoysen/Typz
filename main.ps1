@@ -104,7 +104,7 @@ function Option1 {
     $positonLeft = [Console]::CursorLeft
     $positonTop = [Console]::CursorTop
     [Console]::SetCursorPosition(0, 0)
-    [Console]::Write("$((New-TimeSpan -Start $startDate -End (Get-Date)).TotalSeconds) s, $mistake mistakes, $($position /  (Get-Date)).TotalSeconds) CPS")
+    [Console]::Write("$((New-TimeSpan -Start $startDate -End (Get-Date)).TotalSeconds) s, $mistake mistakes, $($position /  (Get-Date).TotalSeconds) CPS")
     
     [Console]::SetCursorPosition($positonLeft, $positonTop)
 
