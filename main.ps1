@@ -175,9 +175,9 @@ function Option2 {
     $powerShell = [powershell]::Create()
     # Add the script to the PowerShell instance
     $powerShell.AddScript({
-    
+        Console.WriteLine("Process     HandleCount")
         Write-Host "Elapsed Time:"
-    }) | Out-Null
+    })
     
     
     # Associate the PowerShell instance with the runspace
