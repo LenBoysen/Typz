@@ -94,8 +94,7 @@ function Option1 {
 
 
     }
-    pause
-
+    [Console]::Write($input.KeyChar)
     # Reset the console color and hide the cursor
     [Console]::ReadKey($false) | Out-Null
     [Console]::ForegroundColor = $originalColor
