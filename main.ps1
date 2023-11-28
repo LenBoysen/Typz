@@ -34,7 +34,7 @@ function Option1 {
     [Console]::Write($englishText)
 
     # Set the cursor position to the beginning
-    [Console]::SetCursorPosition(0, 0)
+    [Console]::SetCursorPosition(0, 1)
 
     # Enable the cursor
     [Console]::CursorVisible = $true
