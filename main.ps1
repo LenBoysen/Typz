@@ -65,10 +65,7 @@ function Option1 {
         # If backspace is pressed, restore the original color and decrement the position
         [Console]::ForegroundColor = $originalColor
     } elseif ($position -ge $englishText.Length) {
-        # If the position is beyond the length of the English text, delete the last character
-        [Console]::SetCursorPosition([Console]::CursorLeft - 1, [Console]::CursorTop)
-        [Console]::Write(' ')
-        [Console]::SetCursorPosition([Console]::CursorLeft - 1, [Console]::CursorTop)
+    
     } else {
         # Calculate the expected character based on the position
         $expectedChar = $englishText[$position]
@@ -83,13 +80,13 @@ function Option1 {
             # If the input does not match, display in red
             [Console]::ForegroundColor = [ConsoleColor]::Red
         }
+        [Console]::Write($input.KeyChar)
+
+        
+        $input = [Console]::ReadKey($true)
     }
 
-        # Overwrite the existing text with the user input
-        # [Console]::Write($input.KeyChar)
 
-        # Read the next key
-        $input = [Console]::ReadKey($true)
     }
 
     # Reset the console color and hide the cursor
