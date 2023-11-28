@@ -68,10 +68,10 @@ do {
         13 {
             # Enter key
             
-            switch ($selectedOption.ToString()) {
-                [MenuOption]::Option1.ToString() { Option1 }
-                [MenuOption]::Option2.ToString() { Option2 }
-                [MenuOption]::Exit.ToString() { break }
+            switch ($selectedOption) {
+                [int][MenuOption]::Option1 { Option1 }
+                [int][MenuOption]::Option2 { Option2 }
+                [int][MenuOption]::Exit { break }
             }
         }
     }
