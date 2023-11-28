@@ -9,6 +9,13 @@ function Show-Menu {
     Write-Host "======================"
 }
 
+enum MenuOption {
+    Option1 = 1
+    Option2 = 2
+    Exit = 3
+}
+
+
 function Set-OptionColor {
     param(
         [string]$option,
@@ -33,16 +40,16 @@ function Option2 {
     Read-Host -Prompt "Press Enter to continue"
 }
 
-$selectedOption = 1
+$selectedOption = [MenuOption]::Option1
 
 do {
     Show-Menu
 
-    for ($i = 1; $i -le 3; $i++) {
-        if ($i -eq $selectedOption) {
-            Set-OptionColor "$i. Option $i" 'Green'
+    foreach ($option in [MenuOption]::GetValues([MenuOption])) {
+        if ($option -eq $selectedOption) {
+            Set-OptionColor "$option. $($option.ToString())" 'Green'
         } else {
-            Write-Host "$i. Option $i"
+            Write-Host "$option. $($option.ToString())"
         }
     }
 
