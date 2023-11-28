@@ -67,7 +67,9 @@ do {
     switch ($key) {
         13 {
             # Enter key
-            Option1
+            Clear-Host
+            Read-Host -Prompt $selectedOption
+            
             switch ($selectedOption) {
                 [MenuOption]::Option1 { Option1 }
                 [MenuOption]::Option2 { Option2 }
