@@ -27,9 +27,12 @@ function Option1 {
     Clear-Host
 
 
-    # Initialize the startTime variable
-    $startTime = Get-Date
 
+
+
+    # Record the start time
+    $startTime = Get-Date
+    
     # Create a runspace
     $runspace = [runspacefactory]::CreateRunspace()
     $runspace.Open()
@@ -39,7 +42,7 @@ function Option1 {
     
     # Add the script to the PowerShell instance
     $powerShell.AddScript({
-        param ($startTime)
+        param($startTime)
     
         while ($true) {
             # Calculate the elapsed time
@@ -47,21 +50,24 @@ function Option1 {
     
             # Clear the console and update the elapsed time
             Clear-Host
-            Write-Host "$($elapsedTime.ToString())"
+            Write-Host "Elapsed Time: $($elapsedTime.ToString())"
     
             # Sleep for a short duration before updating again
-            Start-Sleep -Milliseconds 50
+            Start-Sleep -Milliseconds 500
         }
     })
-
-# Pass the $startTime variable to the script
-$powerShell.AddParameter('startTime', $startTime)
+    
+    # Pass the $startTime variable as an argument to the script
+    $powerShell.AddArgument($startTime)
     
     # Associate the PowerShell instance with the runspace
     $powerShell.Runspace = $runspace
     
     # Start the PowerShell script in the background
     $asyncObject = $powerShell.BeginInvoke()
+
+
+
     
     # Display the English text with all letters in light grey
     $originalColor = $Host.UI.RawUI.ForegroundColor
