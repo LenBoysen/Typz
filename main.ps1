@@ -32,39 +32,7 @@ function Option1 {
 
     # Record the start time
     $startTime = Get-Date
-    # Create a runspace
-    $runspace = [runspacefactory]::CreateRunspace()
-    $runspace.Open()
-    # Create a PowerShell instance within the runspace
-    $powerShell = [powershell]::Create()
-    # Add the script to the PowerShell instance
-    $powerShell.AddScript({
-        param($startTime)
-    
-        while ($true) {
-            # Calculate the elapsed time
-            $elapsedTime = (Get-Date) - $startTime
-            $positonLeft = [Console]::CursorLeft
-            $positonTop  = [Console]::CursorTop
-    
-            # Clear the console and update the elapsed time
-            [Console]::SetCursorPosition(15, 0)
-            Write-Host "Elapsed Time: $($elapsedTime.ToString())"
-            [Console]::SetCursorPosition($positonLeft, $positonTop)
-            # Sleep for a short duration before updating again
-            Start-Sleep -Milliseconds 500
-        }
-    }) | Out-Null
-    
-    # Pass the $startTime variable as an argument to the script
-    $powerShell.AddArgument($startTime) | Out-Null
-    
-    # Associate the PowerShell instance with the runspace
-    $powerShell.Runspace = $runspace
-
-    # Start the PowerShell script in the background
-    $asyncObject = $powerShell.BeginInvoke()
-
+   
 
 
 
@@ -145,12 +113,6 @@ function Option1 {
 
 
     }
-    # Stop the runspace
-    $powerShell.EndInvoke($asyncObject)
-
-    # Close the runspace
-    $runspace.Close()
-
     
     # Reset the console color and hide the cursor
     #[Console]::ReadKey($false) | Out-Null
