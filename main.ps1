@@ -67,11 +67,11 @@ do {
     switch ($key) {
         13 {
             # Enter key
-            pause
+            
             switch ($selectedOption) {
-                0 { Option1 }
-                2 { Option2 }
-                3 { break }
+                [MenuOption]::Option1 { Option1 }
+                [MenuOption]::Option2 { Option2 }
+                [MenuOption]::Exit { break }
             }
         }
     }
