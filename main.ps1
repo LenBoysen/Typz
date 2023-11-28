@@ -46,6 +46,11 @@ function Option1 {
     $input = [Console]::ReadKey($true)
     while ($input.Key -ne 'Enter') {
     if ($input.Key -eq 'Backspace') {
+        [Console]::ForegroundColor = [ConsoleColor]::DarkGray
+        [Console]::Write($englishText[$position])
+        [Console]::SetCursorPosition([Console]::CursorLeft - 1, [Console]::CursorTop)
+
+    
         # If backspace is pressed, restore the original color and decrement the position
         [Console]::ForegroundColor = $originalColor
         $position = [math]::Max(0, $position - 1)
