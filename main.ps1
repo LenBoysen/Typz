@@ -98,9 +98,7 @@ function Option1 {
         
         $input = [Console]::ReadKey($true)
     }
-
-
-    }
+    
     [Console]::ForegroundColor = [ConsoleColor]::White
     $positonLeft = [Console]::CursorLeft
     $positonTop = [Console]::CursorTop
@@ -108,6 +106,8 @@ function Option1 {
     [Console]::Write((Get-Date))
     
     [Console]::SetCursorPosition($positonLeft, $positonTop)
+
+    }
 
     # Reset the console color and hide the cursor
     #[Console]::ReadKey($false) | Out-Null
