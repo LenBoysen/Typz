@@ -73,9 +73,9 @@ do {
                 #1 {Option1}
                 #"Option1" {Option1}
                 [MenuOption]::Option1 { Option1 }
-                [string][MenuOption]::Option1 { Option2 }
-                #[MenuOption]::Option1.ToString() { Option1 }
-                [string][MenuOption]::Option1.ToString() { Option2 }
+                #[string][MenuOption]::Option1 { Option2 }
+                [MenuOption]::Option1.ToString() { Option1 }
+                #[string][MenuOption]::Option1.ToString() { Option2 }
                 #[int][MenuOption]::Option1 { Option1 }
                 [int][MenuOption]::Option2 { Option2 }
                 [int][MenuOption]::Exit { break }
