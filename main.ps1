@@ -71,9 +71,9 @@ do {
             # Enter key
             
             switch ($selectedOption) {
-                ([MenuOption]::Option1) { Option1 }
-                ([MenuOption]::Option2) { Option2 }
-                ([MenuOption]::Exit) { Clear-Host; return }
+                ([MenuOption]::Play) { Option1 }
+                ([MenuOption]::Options) { Option2 }
+                ([MenuOption]::Quit) { Clear-Host; return }
             }
         }
     }
