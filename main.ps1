@@ -34,7 +34,7 @@ function Option1 {
     $Host.UI.RawUI.ForegroundColor = [ConsoleColor]::DarkGray
 
     
-    $output = curl https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt
+    $output = curl https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt | NullOut
     
     $englishText = ""
     for ($i=0; $i -lt 20; $i++){
