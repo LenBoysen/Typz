@@ -41,6 +41,10 @@ function Option1 {
     # Enable the cursor
     [Console]::CursorVisible = $true
 
+    $startDate = Get-Date
+
+    $mistake = 0
+
     # Initialize the position variable
     $position = 0
 
@@ -90,6 +94,14 @@ function Option1 {
             [Console]::Write($expectedChar)
         }
 
+        [Console]::ForegroundColor = [ConsoleColor]::White
+        $positonLeft = [Console]::CursorLeft
+        $positonTop = [Console]::CursorTop
+        
+        [Console]::SetCursorPosition(0, 1)
+        [Console]::Write($startDate - Get-Date)
+        
+        [Console]::SetCursorPosition($positonLeft, $positonTop)
         
         $input = [Console]::ReadKey($true)
     }
