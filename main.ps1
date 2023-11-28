@@ -102,8 +102,8 @@ function Option1 {
     [Console]::ForegroundColor = [ConsoleColor]::White
     $positonLeft = [Console]::CursorLeft
     $positonTop = [Console]::CursorTop
-    [Console]::SetCursorPosition(0, 1)
-    [Console]::Write((Get-Date))
+    [Console]::SetCursorPosition(0, 0)
+    [Console]::Write("$((New-TimeSpan -Start $startDate -End (Get-Date)).TotalSeconds) s  with $mistake mistakes")
     
     [Console]::SetCursorPosition($positonLeft, $positonTop)
 
