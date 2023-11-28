@@ -49,13 +49,14 @@ function Option1 {
     
         [Console]::SetCursorPosition([Console]::CursorLeft - 1, [Console]::CursorTop)
         
+        $position = [math]::Max(0, $position - 1)
+        
         [Console]::ForegroundColor = [ConsoleColor]::DarkGray
         [Console]::Write($englishText[$position])
 
     
         # If backspace is pressed, restore the original color and decrement the position
         [Console]::ForegroundColor = $originalColor
-        $position = [math]::Max(0, $position - 1)
     } else {
         # Calculate the expected character based on the position
         $expectedChar = $englishText[$position]
