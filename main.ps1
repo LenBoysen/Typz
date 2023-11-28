@@ -35,7 +35,10 @@ function Option1 {
     $runspace.Open()
     
     # Create a PowerShell instance within the runspace
-    $powerShell = [powershell]::Create().AddScript({
+    $powerShell = [powershell]::Create()
+    
+    # Add the script to the PowerShell instance
+    $powerShell.AddScript({
         param ($startTime)
     
         while ($true) {
@@ -43,13 +46,16 @@ function Option1 {
             $elapsedTime = (Get-Date) - $startTime
     
             # Clear the console and update the elapsed time
-            [Console]::SetCursorPosition(0, 15)
+            Clear-Host
             Write-Host "$($elapsedTime.ToString())"
     
             # Sleep for a short duration before updating again
-            Start-Sleep -Milliseconds 500
+            Start-Sleep -Milliseconds 50
         }
-    }) -ArgumentList $startTime
+    })
+
+# Pass the $startTime variable to the script
+$powerShell.AddParameter('startTime', $startTime)
     
     # Associate the PowerShell instance with the runspace
     $powerShell.Runspace = $runspace
