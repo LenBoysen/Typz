@@ -38,7 +38,7 @@ function Option1 {
 
 
     # Set the cursor position to the beginning
-    [Console]::SetCursorPosition(1, 0)
+    [Console]::SetCursorPosition(0, 1)
 
     
     # Display the English text with all letters in light grey
