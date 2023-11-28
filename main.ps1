@@ -23,7 +23,7 @@ function Set-OptionColor {
     )
 
     $escape = [char]27
-    Write-Host "$escape[48;2;40;40;40m $option $escape[0m"
+    Write-Host "$option" -BackgroundColor $bgColor
 }
 
 function Option1 {
