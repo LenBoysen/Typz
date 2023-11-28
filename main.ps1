@@ -50,11 +50,12 @@ function Option1 {
         [Console]::ForegroundColor = $originalColor
         $position = [math]::Max(0, $position - 1)
     } else {
-        # If the input is a lowercase letter or space, increment the position
-        $position++
         # Calculate the expected character based on the position
-        $expectedChar = $expectedChar = $englishText[$position]
-
+        $expectedChar = $englishText[$position]
+        
+        # Increment the position
+        $position++
+        
         if ($input.KeyChar -eq $expectedChar) {
             # If the input matches the expected character, display in white
             [Console]::ForegroundColor = [ConsoleColor]::White
