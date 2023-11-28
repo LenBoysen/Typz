@@ -62,7 +62,8 @@ function Option1 {
     
     # Associate the PowerShell instance with the runspace
     $powerShell.Runspace = $runspace
-    
+
+    pause
     # Start the PowerShell script in the background
     $asyncObject = $powerShell.BeginInvoke()
 
