@@ -17,15 +17,6 @@ enum MenuOption {
 }
 
 
-function Set-OptionColor {
-    param(
-        [string]$option,
-        [string]$bgColor
-    )
-
-    $escape = [char]27
-    Write-Host "$option" -BackgroundColor $bgColor
-}
 
 function Option1 {
     Clear-Host
@@ -53,7 +44,7 @@ do {
 
     foreach ($option in [MenuOption]::GetValues([MenuOption])) {
         if ($option -eq $selectedOption) {
-            Set-OptionColor "$option" 'Green'
+            Write-Host "$option" -BackgroundColor 'Green'
         } else {
             Write-Host "$option"
         }
