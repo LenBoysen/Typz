@@ -39,14 +39,32 @@ function Option1 {
     # Enable the cursor
     [Console]::CursorVisible = $true
 
+    # Initialize the position variable
+    $position = 0
+
     # Capture user input and process it
     $input = [Console]::ReadKey($true)
     while ($input.Key -ne 'Enter') {
         if ($input.KeyChar -in 'a'..'z') {
-            # If the input is a lowercase letter, make it red
-            [Console]::ForegroundColor = [ConsoleColor]::Red
+            # If the input is a lowercase letter, increment the position
+            $position++
+
+            # Calculate the expected character based on the position
+            $expectedChar = [char]($position - 1 + [int][char]'a')
+
+            if ($input.KeyChar -eq $expectedChar) {
+                # If the input matches the expected character, display in white
+                [Console]::ForegroundColor = [ConsoleColor]::White
+            } else {
+                # If the input does not match, display in red
+                [Console]::ForegroundColor = [ConsoleColor]::Red
+            }
         } elseif ($input.Key -eq 'Backspace') {
-            # If backspace is pressed, restore the original color
+            # If backspace is pressed, restore the original color and decrement the position
+            [Console]::ForegroundColor = $originalColor
+            $position = [math]::Max(0, $position - 1)
+        } else {
+            # For other characters, display in the original color
             [Console]::ForegroundColor = $originalColor
         }
 
@@ -61,6 +79,7 @@ function Option1 {
     [Console]::ForegroundColor = $originalColor
     [Console]::CursorVisible = $false
 }
+
 
 
 
